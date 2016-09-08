@@ -27,8 +27,8 @@ class HomeController extends Controller
     public function index()
     {
         //$user = User::find(1);
-        //$user = auth()->user();
-        $user = Auth::user();
+        //$user = auth()->user();  // helper
+        $user = Auth::user();   //facade
 
         return view('home', compact('user'));
     }

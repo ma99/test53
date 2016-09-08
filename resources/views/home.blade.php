@@ -8,15 +8,15 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                  @if  {{ count($user->unreadNotifications) > 0 }}
-                     @foreach ($user->unreadNotifications as $notification) 
-                        <li> {{ $notification->type }} </li>
-                        <li> {{ $notification->data['name'] }} </li>
-                        <hr>
-                     @endforeach
-                  @else
-                        <strong>No Notifications</strong>
-                  @endif  
+                     @if (count($user->unreadNotifications)>0) 
+                         @foreach ($user->unreadNotifications as $notification) 
+                            <li> {{ $notification->type }} </li>
+                            <li> {{ $notification->data['name'] }} </li>
+                            <hr>
+                         @endforeach
+                     @else
+                            <strong>No Notifications</strong>
+                     @endif   
                 </div>
 
                 <div>

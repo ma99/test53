@@ -20,7 +20,9 @@ class NotificationController extends Controller
 
     public function markasread()
     {
-    	$user = User::find(1);
+    	//$user = User::find(1);
+    	 //$user = auth()->user();  // helper
+    	$user = Auth::user();
 
 		foreach ($user->unreadNotifications as $notification) {
 		    $notification->markAsRead();
