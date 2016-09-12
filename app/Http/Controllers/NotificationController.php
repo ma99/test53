@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Notifications\NewEvent;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
