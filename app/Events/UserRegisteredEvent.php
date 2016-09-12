@@ -29,7 +29,6 @@ class UserRegisteredEvent implements ShouldBroadcast
     {
          //return new PrivateChannel('order.'.$this->update->order_id);
         //return new Channel('channel_one'); //public 
-        PresenceChannel
         //return new PrivateChannel('mychannel_one');
         return new PresenceChannel('mychannel_one');
     }
