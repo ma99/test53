@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Socialite;
+use App\User;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
