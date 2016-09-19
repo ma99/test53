@@ -38,5 +38,9 @@ Route::get('send/{event}', 'MailController@sendmail');
 Route::get('notify', 'NotificationController@sendnotification');
 Route::delete('notifications', 'NotificationController@markasread');
 
+// Socialite for github
+Route::get('auth/github', 'Auth\AuthController@redirectToProvider');
+Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback');
+
 
 	
