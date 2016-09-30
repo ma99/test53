@@ -35,9 +35,10 @@ Route::get('listen', function(){
 //mailable
 Route::get('send/{event}', 'MailController@sendmail');
 
-Route::get('notify', 'NotificationController@sendnotification');
+//Notification
+Route::get('notify', 'NotificationController@sendNotification');
 Route::get('notifications', 'NotificationController@show');
-Route::delete('notifications', 'NotificationController@markasread');
+Route::delete('notifications', 'NotificationController@markasRead');
 
 
 // Socialite for github

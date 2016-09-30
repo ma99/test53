@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
-    public function sendnotification()
+    public function sendNotification()
     {
        /* working  
         $user = User::find($userId);
@@ -32,7 +32,7 @@ class NotificationController extends Controller
         return view('notifications');
     }
 
-    public function markasread()
+    public function markasRead()
     {
     	//$user = User::find(1);
     	 //$user = auth()->user();  // helper
