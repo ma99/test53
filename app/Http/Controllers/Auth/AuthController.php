@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\User;
+
 use Illuminate\Http\Request;
 use Auth;
 use Socialite;
@@ -35,6 +36,7 @@ class AuthController extends Controller
             return Redirect::to('auth/github');
         }
 
+       // dd($user);
         $authUser = $this->findOrCreateUser($user);
         //dd($user);
         //Auth::login($authUser, true);
@@ -57,11 +59,17 @@ class AuthController extends Controller
             return $authUser;
         }
 
+        $name = ($githubUser->name==null) ? $githubUser->nickname : $githubUser->name;
+
         return User::create([
+
             'github_id' => $githubUser->id,
-            'name' => $githubUser->name,
+            'name' => $name,
             'email' => $githubUser->email,
             'avatar' => $githubUser->avatar
         ]);
     }
 }
+/* Note: make the password nullable in users_table migrations if it's migrated. 
+    Otherwise going to database users table structure using phpmyadmin make it nullable.
+*/
