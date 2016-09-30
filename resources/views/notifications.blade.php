@@ -27,6 +27,7 @@
                 .notification((notification) => {
                     console.log(notification.type);
                     console.log(notification.name);
+                    console.log(notification.email);
             });
             
         </script> 
