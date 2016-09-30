@@ -36,7 +36,9 @@ Route::get('listen', function(){
 Route::get('send/{event}', 'MailController@sendmail');
 
 Route::get('notify', 'NotificationController@sendnotification');
+Route::get('notifications', 'NotificationController@show');
 Route::delete('notifications', 'NotificationController@markasread');
+
 
 // Socialite for github
 Route::get('auth/github', 'Auth\AuthController@redirectToProvider');

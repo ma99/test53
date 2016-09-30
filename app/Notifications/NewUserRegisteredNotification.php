@@ -2,25 +2,26 @@
 
 namespace App\Notifications;
 
-use App\Event;
 use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
+use App\User;
 
-class NewEvent extends Notification implements ShouldQueue
+class NewUserRegisteredNotification extends Notification
 {
     use Queueable;
 
-    public $event;
+    public $user;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Event $event)
+    public function __construct(User $user)
     {
-        $this->event = $event;
+        $this->user = $user;
     }
 
     /**
@@ -31,7 +32,6 @@ class NewEvent extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        //return ['mail', 'database'];
         return ['database', 'broadcast'];
     }
 
@@ -44,7 +44,6 @@ class NewEvent extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('New Event Coming Soon')
                     ->line('The introduction to the notification.')
                     ->action('Notification Action', 'https://laravel.com')
                     ->line('Thank you for using our application!');
@@ -59,18 +58,17 @@ class NewEvent extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            'event_id' => $this->event->id,
-            'name' => $this->event->name,
-            'location' => $this->event->location
+            'user_id' => $this->user->id,
+            'name' => $this->user->name,
+            'email' => $this->user->email
         ];
     }
-
     public function toBroadcast($notifiable)
     {
         return [
-            'event_id' => $this->event->id,
-            'name' => $this->event->name,
-            'location' => $this->event->location
+            'user_id' => $this->user->id,
+            'name' => $this->user->name,
+            'email' => $this->user->email
         ];
     }
 }
