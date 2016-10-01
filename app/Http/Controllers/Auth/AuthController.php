@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\User;
-use Auth;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
+use Auth;
 use Socialite;
 
 class AuthController extends Controller
@@ -31,16 +31,20 @@ class AuthController extends Controller
     {
         try {
             $user = Socialite::driver('github')->user();
+            
         } catch (Exception $e) {
             return Redirect::to('auth/github');
         }
 
        // dd($user);
         $authUser = $this->findOrCreateUser($user);
+        //dd($user);
+        //Auth::login($authUser, true);
+        Auth::login($user, true);
 
-        Auth::login($authUser, true);
+        //return Redirect::to('home');
+        return redirect('/home');
 
-        return Redirect::to('home');
     }
 
     /**
@@ -58,9 +62,10 @@ class AuthController extends Controller
         $name = ($githubUser->name==null) ? $githubUser->nickname : $githubUser->name;
 
         return User::create([
+
+            'github_id' => $githubUser->id,
             'name' => $name,
             'email' => $githubUser->email,
-            'github_id' => $githubUser->id,
             'avatar' => $githubUser->avatar
         ]);
     }
