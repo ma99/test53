@@ -41,4 +41,11 @@ return [
         'redirect' => env('GITHUB_URL'),
     ],
 
+    'nexmo' => [
+    'key' => env('NEXMO_KEY'),
+    'secret' => env('NEXMO_SECRET'),
+    'sms_from' => env('SMS_FROM'),
+    //'sms_from' => '15556666666',
+],
+
 ];

@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Messages\NexmoMessage;
 use App\User;
 
 class NewUserRegisteredNotification extends Notification
@@ -32,7 +33,7 @@ class NewUserRegisteredNotification extends Notification
      */
     public function via($notifiable)
     {
-       return ['database', 'broadcast'];
+       return ['database', 'broadcast', 'nexmo'];
     }
 
     /**
@@ -70,5 +71,11 @@ class NewUserRegisteredNotification extends Notification
             'name' => $this->user->name,
             'email' => $this->user->email
         ];
+    }
+
+    public function toNexmo($notifiable)
+    {
+        return (new NexmoMessage)
+                    ->content('Hello World from MA');
     }
 }
