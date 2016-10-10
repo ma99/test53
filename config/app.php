@@ -180,6 +180,7 @@ return [
 
         // Other service providers...
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
 
     ],
 
