@@ -76,6 +76,6 @@ class NewUserRegisteredNotification extends Notification
     public function toNexmo($notifiable)
     {
         return (new NexmoMessage)
-                    ->content('Hello World from MA');
+                    ->content('Hello World! Msg from Mas');
     }
 }
