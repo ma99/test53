@@ -45,5 +45,10 @@ Route::delete('notifications', 'NotificationController@markasRead');
 Route::get('auth/github', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback');
 
+Route::get('search', function(){
+	   return view('search');
+});
+
+
 
 	

@@ -15,8 +15,8 @@
 </template>
 
 <script>
-    export default {
-        ready() {
+    module.exports = {
+        mounted() {
             console.log('Component ready.')
         }
     }
