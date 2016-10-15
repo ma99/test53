@@ -4,7 +4,7 @@
                 <div class="form-group">
                     <div class="input-group input-group-md">
                         <div class="icon-addon addon-md">
-                            <input id="modal" type="text" placeholder="What are you looking for?" class="form-control" v-model="query">
+                            <input id="modal" type="text" placeholder="What are you looking for?" class="form-control" @keyup.esc="close" v-model="query">
                         </div>
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button" @click="search()" v-if="!loading">Search!</button>
@@ -13,13 +13,13 @@
                     </div>
                 </div>
             </div>
-           
+          
            
             <!-- Modal -->
             <div class="modal" id="myModal" v-if="modal">
                 <div class="modal-content">
                     <div class="circle">
-                        <span class="close" @click="close()">x</span>                  
+                        <span class="close" data-toggle="tooltip" data-placement="top" title="Press esc to close" @click="close">x</span>                  
                     </div>    
                     
                     <div class="alert alert-danger" role="alert" v-if="error">
@@ -124,7 +124,7 @@
 <style>
  /* The Modal (background) */
 .modal {
-    display: block; /* Hidden by default */
+    display: block; 
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
