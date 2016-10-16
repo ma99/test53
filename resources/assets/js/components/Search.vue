@@ -16,13 +16,13 @@
           
            
             <!-- Modal -->
-            <div class="modal" id="myModal" v-if="modal">
+            <div id="myModal" class="modal" v-if="modal">
                 <div class="modal-content">
                     <div class="circle">
                         <span class="close" data-toggle="tooltip" data-placement="top" title="Press esc to close" @click="close">x</span>                  
                     </div>    
                     
-                    <div class="alert alert-danger" role="alert" v-if="error">
+                    <div id="error" class="alert alert-danger" role="alert" v-if="error">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                         {{ error }}

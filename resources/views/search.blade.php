@@ -3,7 +3,7 @@
 @section('content')
 <div id="app"> 
 	<div class="container search">
-		<search></search>
+		<search ref="foo"></search>
 	</div>
     {{-- <example></example> --}}
     <div class="container">
@@ -50,4 +50,4 @@
     </div>
 
  </div>   
-@endsection
+ @endsection
